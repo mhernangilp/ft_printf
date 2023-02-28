@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 20:48:44 by mhernang          #+#    #+#             */
-/*   Updated: 2023/01/27 21:28:02 by mhernang         ###   ########.fr       */
+/*   Created: 2023/02/28 12:09:05 by mhernang          #+#    #+#             */
+/*   Updated: 2023/02/28 17:04:51 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_lstsize(t_list *lst)
-{
-	int		i;
-	t_list	*p;
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+# include "libft/libft.h"
 
-	i = 1;
-	p = lst;
-	if (!p)
-		return (0);
-	while (p -> next)
-	{
-		p = p -> next;
-		i++;
-	}
-	return (i);
-}
+int	ft_printf(char const *str, ...);
+
+#endif

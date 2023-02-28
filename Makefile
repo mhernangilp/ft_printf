@@ -6,39 +6,52 @@
 #    By: mhernang <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 17:18:55 by mhernang          #+#    #+#              #
-#    Updated: 2023/02/28 17:27:57 by mhernang         ###   ########.fr        #
+#    Updated: 2023/02/28 18:23:33 by mhernang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-INCLUDE = include
-LIBFT = libft
-SRC = src/ft_printf.c
-CC = gcc
-FLAGS = -Wall -Werror -Wextra
-RM = rm -f
-AR = ar rcs
+NAME			=	libftprintf.a
 
-OBJ = ${SRC:.c=.o}
+CC				=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
+AR				=	ar
+ARFLAGS 		=	rcs
+RM				=	rm -rf
 
-all: ${NAME}
+SRC				=	ft_printf
+SRCS 			=	$(addsuffix .c, $(SRC))
 
-${NAME}: ${OBJ}
-			@make -C $(LIBFT)
-			@cp libft/libft.a .
-			@mv libft.a $(NAME)
-			@$(AR) $(NAME) $(OBJ)
-			@echo "ft_printf compiled!"	
+OBJ_DIR			=	obj
+OBJS			=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-%.o: %.c
-	${CC} ${CCFLAGS} -c -o $@ $<
+LIBFT_PATH		=	./libft
+LIBFT			=	$(LIBFT_PATH)/libft.a
+
+$(OBJ_DIR)/%.o:		%.c
+					$(CC) $(CFLAGS) -c $< -o $@
+
+all:				$(NAME)
+
+bonus:				all
+
+$(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJS)
+				cp	$(LIBFT) $(NAME)
+					$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+$(LIBFT):
+					make -C $(LIBFT_PATH) all
+
+$(OBJ_DIR):
+					mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f ${OBJ} ${B_OBJ}
+					make -C $(LIBFT_PATH) clean
+					$(RM) $(OBJ_DIR)
 
-fclean: clean
-	rm -f ${NAME}
+fclean:				clean
+					make -C $(LIBFT_PATH) fclean
+					$(RM) $(NAME)
 
-re: fclean all
+re:					fclean all
 
-.PHONY: all clean fclear
+.PHONY:				all bonus clean fclean re libft
