@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 16:23:48 by mhernang          #+#    #+#             */
-/*   Updated: 2023/01/22 15:39:09 by mhernang         ###   ########.fr       */
+/*   Created: 2023/02/28 12:09:05 by mhernang          #+#    #+#             */
+/*   Updated: 2023/02/28 17:04:51 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_toupper(int c)
-{
-	if ((c >= 'a') && (c <= 'z'))
-		return (c - 32);
-	return (c);
-}
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+
+int	ft_print(char const *str, ...);
+
+#endif

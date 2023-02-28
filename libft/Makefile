@@ -68,7 +68,7 @@ B_OBJ = ${B_SRC:.c=.o}
 
 FLAGS = -Wall -Werror -Wextra
 
-INCLUDE = libft.h
+INCLUDE = ../include/libft.h
 
 all:	${NAME}
 

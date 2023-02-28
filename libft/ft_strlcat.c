@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static unsigned int	ft_strlen_max(char *dest, unsigned int size)
 {
