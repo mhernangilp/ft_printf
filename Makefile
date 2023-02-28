@@ -32,7 +32,7 @@ $(OBJ_DIR)/%.o:		%.c
 
 all:				$(NAME)
 
-bonus:				all
+#bonus:				all
 
 $(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJS)
 				cp	$(LIBFT) $(NAME)
