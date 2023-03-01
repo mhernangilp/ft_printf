@@ -39,13 +39,14 @@ int	ft_printf(char const *str, ...)
 	}
 	return 0;
 }
-/*
-int main()
+
+int main(void)
 {
 	int	i;
 
 	i = 5;
-	ft_printf("Hol%sa", "HEY");
+	printf(" %s \n", "-");
+	ft_printf(" %s ", "-");
 	return 0;
 }
-*/
+
