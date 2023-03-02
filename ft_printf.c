@@ -12,41 +12,59 @@
 
 #include "ft_printf.h"
 
-static void	select_mode(va_list args, char mode)
+static int	select_mode(va_list args, char mode)
 {
+	int	ret;
+
+	ret = 0;
 	if (mode == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
+		ret = ret_putchar(va_arg(args, int));
 	else if (mode == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
+		ret = ret_putstr(va_arg(args, char *));
+	else if (mode == 'p')
+		ret = 0;	
+	else if (mode == 'd')
+		ret = ret_putdec(va_arg(args, double));
 	else if (mode == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1);
-	
+		ret = ret_putnbr(va_arg(args, int));
+	else if (mode == 'u')
+		ret = 0;
+	else if (mode == 'x')
+		ret = 0;
+	else if (mode == 'X')
+		ret = 0;
+	else if (mode == '%')
+		ret = 0;
+	return (ret);
 }
 
 int	ft_printf(char const *str, ...)
 {
 	va_list	args;
 	int		i;
+	int		ret;
 
+	ret = 0;
 	va_start(args, str);
 	i = -1;
 	while (str[++i])
 	{
 		if (str[i] == '%')
-			select_mode(args, str[++i]);
+			ret += select_mode(args, str[++i]);
 		else
+		{
 			write(1, &str[i], 1);
+			ret++;
+		}
 	}
-	return 0;
+	va_end(args);
+	return (ret);
 }
 
 int main(void)
 {
-	int	i;
-
-	i = 5;
-	printf(" %s \n", "-");
-	ft_printf(" %s ", "-");
+	printf("No1: %d\n", printf("Hey %f que tal\n", 12.9999999999));
+	printf("No2: %d\n", ft_printf("Hey %d que tal\n", 12.999999999));
 	return 0;
 }
 
