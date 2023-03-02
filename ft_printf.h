@@ -21,6 +21,6 @@ int	ft_printf(char const *str, ...);
 int	ret_putchar(char c);
 int	ret_putstr(char *s);
 int	ret_putnbr(int n);
-int	ret_putdec(double n);
+int	ret_putdec(double n, int abs);
 
 #endif

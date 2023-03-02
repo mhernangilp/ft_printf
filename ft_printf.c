@@ -22,13 +22,13 @@ static int	select_mode(va_list args, char mode)
 	else if (mode == 's')
 		ret = ret_putstr(va_arg(args, char *));
 	else if (mode == 'p')
-		ret = 0;	
+		ret = 0;
 	else if (mode == 'd')
-		ret = ret_putdec(va_arg(args, double));
+		ret = ret_putdec(va_arg(args, double), 0);
 	else if (mode == 'i')
 		ret = ret_putnbr(va_arg(args, int));
 	else if (mode == 'u')
-		ret = 0;
+		ret = ret_putdec(va_arg(args, double), 1);
 	else if (mode == 'x')
 		ret = 0;
 	else if (mode == 'X')
@@ -63,8 +63,8 @@ int	ft_printf(char const *str, ...)
 
 int main(void)
 {
-	printf("No1: %d\n", printf("Hey %f que tal\n", 12.9999999999));
-	printf("No2: %d\n", ft_printf("Hey %d que tal\n", 12.999999999));
+	printf("No1: %d\n", printf("Hey %f que tal\n", -12.9999999999));
+	printf("No2: %d\n", ft_printf("Hey %u que tal\n", -12.999999999));
 	return 0;
 }
 
