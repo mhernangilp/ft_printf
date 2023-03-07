@@ -6,11 +6,11 @@
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:51 by mhernang          #+#    #+#             */
-/*   Updated: 2023/02/28 18:27:21 by mhernang         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:04:01 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static int	select_mode(va_list args, char mode)
 {
@@ -60,11 +60,10 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (ret);
 }
-
+/*
 int main(void)
 {
 	printf("No1: %d\n", printf("Hey %f que tal\n", -12.9999999999));
 	printf("No2: %d\n", ft_printf("Hey %u que tal\n", -12.999999999));
 	return 0;
-}
-
+}*/

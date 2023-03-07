@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ret_putstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 20:48:44 by mhernang          #+#    #+#             */
-/*   Updated: 2023/01/27 21:28:02 by mhernang         ###   ########.fr       */
+/*   Created: 2023/03/07 20:09:26 by mhernang          #+#    #+#             */
+/*   Updated: 2023/03/07 20:09:45 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../ft_printf.h"
 
-int	ft_lstsize(t_list *lst)
+int	ret_putstr(char *s)
 {
-	int		i;
-	t_list	*p;
+	int	i;
 
-	i = 1;
-	p = lst;
-	if (!p)
+	if (!s)
 		return (0);
-	while (p -> next)
-	{
-		p = p -> next;
-		i++;
-	}
+	i = -1;
+	while (s[++i])
+		write (1, &s[i], 1);
 	return (i);
 }

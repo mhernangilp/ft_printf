@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ret_putdec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 13:15:05 by mhernang          #+#    #+#             */
-/*   Updated: 2023/01/23 20:11:09 by mhernang         ###   ########.fr       */
+/*   Created: 2023/03/07 20:07:00 by mhernang          #+#    #+#             */
+/*   Updated: 2023/03/07 20:07:21 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../ft_printf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+int	ret_putdec(double n, int abs)
 {
-	char	*g;
-	size_t	i;
+	int	i;
+	int	ret;
 
-	g = (char *) s;
-	i = 0;
-	while (i < n)
+	i = -1;
+	ret = 0;
+	if (n < 0)
 	{
-		g[i] = (char)c;
-		i++;
+		if (abs == 0)
+			ret += ret_putchar('-');
+		n *= -1;
 	}
-	return (g);
+	n *= 10000000;
+	if ((int)n % 10 >= 5)
+		n += 10;
+	n /= 10000000;
+	ret += ret_putnbr((int) n);
+	ret += ret_putchar('.');
+	while (++i < 6)
+	{
+		n *= 10;
+		ret += ret_putnbr((int)n % 10);
+	}
+	return (ret);
 }
