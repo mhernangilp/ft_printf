@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+#include <stdarg.h>
+#include <stdlib.h>
 
 static int	select_mode(va_list args, char mode)
 {
@@ -30,11 +32,11 @@ static int	select_mode(va_list args, char mode)
 	else if (mode == 'u')
 		ret = ret_putdec(va_arg(args, double), 1);
 	else if (mode == 'x')
-		ret = 0;
+		ret = ret_puthex(va_arg(args, int));
 	else if (mode == 'X')
 		ret = 0;
 	else if (mode == '%')
-		ret = 0;
+		ret = ret_putchar('%');
 	return (ret);
 }
 
@@ -60,10 +62,10 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (ret);
 }
-/*
+
 int main(void)
 {
-	printf("No1: %d\n", printf("Hey %f que tal\n", -12.9999999999));
-	printf("No2: %d\n", ft_printf("Hey %u que tal\n", -12.999999999));
+	printf("No1: %d\n", printf("Hey %x que tal\n", -719));
+	printf("No2: %d\n", ft_printf("Hey %x que tal\n", -719));
 	return 0;
-}*/
+}

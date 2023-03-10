@@ -16,11 +16,13 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 
 int	ft_printf(char const *str, ...);
 int	ret_putchar(char c);
 int	ret_putstr(char *s);
 int	ret_putnbr(int n);
 int	ret_putdec(double n, int abs);
+int	ret_puthex(int n);
 
 #endif
