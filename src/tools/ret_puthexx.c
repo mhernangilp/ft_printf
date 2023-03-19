@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_putdec.c                                       :+:      :+:    :+:   */
+/*   ret_puthexx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 20:07:00 by mhernang          #+#    #+#             */
-/*   Updated: 2023/03/07 20:07:21 by mhernang         ###   ########.fr       */
+/*   Created: 2023/03/19 20:15:05 by mhernang          #+#    #+#             */
+/*   Updated: 2023/03/19 20:33:47 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int	ret_putdec(double n, int abs)
+int	ret_puthexx(unsigned int n)
 {
-	int	i;
-	int	ret;
+	char	*str;
+	int		ret;
+	int		i;
 
 	i = -1;
-	ret = 0;
-	if (n < 0)
-	{
-		if (abs == 0)
-			ret += ret_putchar('-');
-		n *= -1;
-	}
-	n *= 10000000;
-	if ((int)n % 10 >= 5)
-		n += 10;
-	n /= 10000000;
-	ret += ret_putnbr((int) n);
-	ret += ret_putchar('.');
-	while (++i < 6)
-	{
-		n *= 10;
-		ret += ret_putnbr((int)n % 10);
-	}
+	str = ft_itoa_base(n, "0123456789ABCDEF");
+	if (!str)
+		return (0);
+	ret = ret_putstr(str);
+	free(str);
 	return (ret);
 }

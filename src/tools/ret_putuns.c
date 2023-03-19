@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_putnbr.c                                       :+:      :+:    :+:   */
+/*   ret_putuns.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 20:06:25 by mhernang          #+#    #+#             */
-/*   Updated: 2023/03/19 20:48:06 by mhernang         ###   ########.fr       */
+/*   Created: 2023/03/19 20:39:34 by mhernang          #+#    #+#             */
+/*   Updated: 2023/03/19 20:47:15 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int	ret_putnbr(int n)
+int	ret_putuns(unsigned int n)
 {
-	int		ret;
 	char	*str;
+	int		ret;
 
-	str = ft_itoa(n);
+	str = ft_itoa_base(n, "0123456789");
 	ret = ret_putstr(str);
 	free(str);
 	return (ret);

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_putnbr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 20:06:25 by mhernang          #+#    #+#             */
-/*   Updated: 2023/03/19 20:48:06 by mhernang         ###   ########.fr       */
+/*   Created: 2023/03/19 19:59:11 by mhernang          #+#    #+#             */
+/*   Updated: 2023/03/19 20:00:33 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int	ret_putnbr(int n)
+int	ft_strlen(const char *str)
 {
-	int		ret;
-	char	*str;
+	int	i;
 
-	str = ft_itoa(n);
-	ret = ret_putstr(str);
-	free(str);
-	return (ret);
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:51 by mhernang          #+#    #+#             */
-/*   Updated: 2023/03/07 20:04:01 by mhernang         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:54:11 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,15 @@ static int	select_mode(va_list args, char mode)
 	else if (mode == 's')
 		ret = ret_putstr(va_arg(args, char *));
 	else if (mode == 'p')
-		ret = 0;
-	else if (mode == 'd')
-		ret = ret_putdec(va_arg(args, double), 0);
-	else if (mode == 'i')
+		ret = ret_putvoid(va_arg(args, void *));
+	else if (mode == 'd' || mode == 'i')
 		ret = ret_putnbr(va_arg(args, int));
 	else if (mode == 'u')
-		ret = ret_putdec(va_arg(args, double), 1);
+		ret = ret_putuns(va_arg(args, unsigned int));
 	else if (mode == 'x')
-		ret = ret_puthex(va_arg(args, int));
+		ret = ret_puthex(va_arg(args, unsigned int));
 	else if (mode == 'X')
-		ret = 0;
+		ret = ret_puthexx(va_arg(args, unsigned int));
 	else if (mode == '%')
 		ret = ret_putchar('%');
 	return (ret);
@@ -65,7 +63,8 @@ int	ft_printf(char const *str, ...)
 
 int main(void)
 {
-	printf("No1: %d\n", printf("Hey %x que tal\n", -719));
-	printf("No2: %d\n", ft_printf("Hey %x que tal\n", -719));
+	int n = 9;
+	printf("No1: %d\n", printf("%p\n", ""));
+	printf("No2: %d\n", ft_printf("%p\n", ""));
 	return 0;
 }
