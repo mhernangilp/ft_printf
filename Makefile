@@ -6,7 +6,7 @@
 #    By: mhernang <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 17:18:55 by mhernang          #+#    #+#              #
-#    Updated: 2023/03/19 20:43:23 by mhernang         ###   ########.fr        #
+#    Updated: 2023/03/21 14:50:14 by mhernang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,10 @@ SRC = src/ft_printf.c \
 		src/tools/ret_putnbr.c \
 		src/tools/ret_putstr.c \
 		src/tools/ret_puthex.c \
-		src/tools/ft_itoa.c \
 		src/tools/ret_putvoid.c \
-		src/tools/ft_itoa_base.c \
 		src/tools/ft_strlen.c \
-		src/tools/ret_puthexx.c \
-		src/tools/ret_putuns.c
+		src/tools/ret_putuns.c \
+		src/tools/ft_itoa.c
 
 OBJ = ${SRC:.c=.o}
 

@@ -6,20 +6,52 @@
 /*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:17:51 by mhernang          #+#    #+#             */
-/*   Updated: 2023/03/19 20:02:35 by mhernang         ###   ########.fr       */
+/*   Updated: 2023/03/21 15:13:16 by mhernang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int	ret_putvoid(void *ptr)
+static int	getlen(uintptr_t n)
+{
+	int	i;
+
+	i = 0;
+	while (n)
+	{
+		n /= 16;
+		i++;
+	}
+	return (i);
+}
+
+static void	putptr_rec(uintptr_t n)
+{
+	if (n >= 16)
+	{
+		putptr_rec(n / 16);
+		putptr_rec(n % 16);
+	}
+	else
+	{
+		if (n < 10)
+			ret_putchar(n + '0');
+		else
+			ret_putchar(n + 'a' - 10);
+	}
+}
+
+int	ret_putvoid(unsigned long long ptr)
 {
 	int		ret;
-	char	*str;
 
 	ret = ret_putstr("0x");
-	str = ft_itoa_base((unsigned long long) ptr, "0123456789abcdef");
-	ret += ret_putstr(str);
-	free(str);
+	if (!ptr)
+		ret += ret_putchar('0');
+	else
+	{
+		putptr_rec(ptr);
+		ret += getlen(ptr);
+	}
 	return (ret);
 }
